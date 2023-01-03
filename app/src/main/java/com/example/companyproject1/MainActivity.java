@@ -4,12 +4,19 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -35,10 +42,14 @@ import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 
 import java.util.Arrays;
+import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity {
 
+    String currentLanguage = "en", currentLang;
+    Button loginbtn;
+    TextView signupbtn,changelang;
     ImageButton googleimage,facebookimage;
     GoogleSignInOptions gso;
     GoogleSignInClient gsc;
@@ -52,26 +63,82 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         googleimage = findViewById(R.id.gimg);
         facebookimage = findViewById(R.id.fimg);
-
+        signupbtn = findViewById(R.id.signup_btn);
+        loginbtn = findViewById(R.id.loginbutton);
+        changelang = findViewById(R.id.change_language);
         auth = FirebaseAuth.getInstance();
+
+        signupbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,SignupActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        loginbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,MainActivity2.class);
+                startActivity(intent);
+            }
+        });
+
+        changelang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeLang();
+            }
+        });
+
+        googlesetup();
+        facebooksetup();
+
+    }
+
+    public void changeLang() {
+        final String lang[] = {"English", "हिन्दी"};
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(this);
+        mBuilder.setTitle("Change Language");
+        mBuilder.setSingleChoiceItems(lang, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (i == 0) {
+                    setlocale("");
+                    recreate();
+                }
+                else if (i == 1) {
+                    setlocale("hi");
+                    recreate();
+                }
+            }
+        });
+
+        mBuilder.create();
+        mBuilder.show();
+    }
+
+    private void setlocale(String localeName) {
+        if (!localeName.equals(currentLanguage)) {
+            Locale myLocale;
+            myLocale = new Locale(localeName);
+            Resources res = getResources();
+            DisplayMetrics dm = res.getDisplayMetrics();
+            Configuration conf = res.getConfiguration();
+            conf.locale = myLocale;
+            res.updateConfiguration(conf, dm);
+            Intent refresh = new Intent(this, MainActivity.class);
+            refresh.putExtra(currentLang, localeName);
+            startActivity(refresh);
+        } else {
+            Toast.makeText(MainActivity.this, "string already updated", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void facebooksetup() {
 
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(getApplication());
-
-
-        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(CLIENT_ID)
-                .requestEmail()
-                .build();
-
-        gsc = GoogleSignIn.getClient(this,gso);
-
-        googleimage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                googlesignin();
-            }
-        });
 
         callbackManager = CallbackManager.Factory.create();
 
@@ -106,7 +173,22 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "clicked over...", Toast.LENGTH_SHORT).show();
             }
         });
+    }
 
+    private void googlesetup() {
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(CLIENT_ID)
+                .requestEmail()
+                .build();
+
+        gsc = GoogleSignIn.getClient(this,gso);
+
+        googleimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                googlesignin();
+            }
+        });
     }
 
     private void handleFacebookAccessToken(AccessToken token) {

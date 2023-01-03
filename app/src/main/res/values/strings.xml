@@ -1,16 +1,40 @@
 <resources>
     <string name="app_name">companyproject1</string>
 
-<!--    <string name="facebook_app_id">1175526953358532</string>-->
-<!--    <string name="fb_login_protocol_scheme">fb1175526953358532</string>-->
-<!--    <string name="facebook_client_token">d622fcb3f89f4e310bda889d2c2bff46</string>-->
+    <!--    <string name="facebook_app_id">1175526953358532</string>-->
+    <!--    <string name="fb_login_protocol_scheme">fb1175526953358532</string>-->
+    <!--    <string name="facebook_client_token">d622fcb3f89f4e310bda889d2c2bff46</string>-->
 
-    <string name="facebook_app_id">1941263666218939</string>
-    <string name="fb_login_protocol_scheme">fb1941263666218939</string>
-    <string name="facebook_client_token">b1dc14fec4547eae0f66081626d15bc3</string>
+    <string name="facebook_app_id" translatable="false">1941263666218939</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb1941263666218939</string>
+    <string name="facebook_client_token" translatable="false">b1dc14fec4547eae0f66081626d15bc3</string>
 
-<!--    <string name="facebook_app_id">1546070442486065</string>-->
-<!--    <string name="fb_login_protocol_scheme">fb1546070442486065</string>-->
-<!--    <string name="facebook_client_token">8aaa80c61e3f36eaf2bca1e990adbde8</string>-->
+    <string name="Email">Email</string>
+    <string name="Password">Password</string>
+    <string name="welcome" translatable="false">Welcome to the app!!</string>
+    <string name="Username">Username</string>
+    <string name="Rememberme">Remember Me</string>
+    <string name="Change">Change language</string>
+    <string name="Signup">Signup</string>
+    <string name="email">Email ID</string>
+    <string name="signout">Log Out</string>
+    <string name="admin" translatable="false">Admin Page</string>
+    <string name="user" translatable="false">User Page</string>
+    <string name="already">Language already selected!</string>
+    <string name="newEmail">This Email has already been taken</string>
+    <string name="Success">Logging Successful</string>
+    <string name="SuccessSign">Sign up Successful!!</string>
+    <string name="Failed">Incorrect Email or password</string>
+    <string name="or_sign_up_using">Or Sign Up Using</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="name">Name</string>
+    <string name="confirm_password">Confirm Password</string>
+
+
+    <!--    <string name="facebook_app_id">1546070442486065</string>-->
+    <!--    <string name="fb_login_protocol_scheme">fb1546070442486065</string>-->
+    <!--    <string name="facebook_client_token">8aaa80c61e3f36eaf2bca1e990adbde8</string>-->
 
 </resources>

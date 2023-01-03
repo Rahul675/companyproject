@@ -14,8 +14,8 @@
         android:id="@+id/main_cardview"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="80dp"
         app:cardCornerRadius="15dp"
         app:cardElevation="15dp"
         app:cardBackgroundColor="@color/white">
@@ -27,10 +27,10 @@
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="100dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="60dp"
-                android:text="@string/login"
+                android:text="@string/Signup"
                 android:textSize="30dp"
                 android:gravity="center"
                 android:textColor="#6A3DBA"
@@ -68,9 +68,9 @@
                         android:layout_width="200dp"
                         android:layout_height="50dp"
                         android:inputType="text"
-                        android:lines="1"
-                        android:hint="@string/Username"
+                        android:hint="@string/name"
                         android:textColorHint="#A87DF4"
+                        android:lines="1"
                         android:textColor="@color/white"
                         android:backgroundTint="#6A3DBA"/>
 
@@ -80,7 +80,47 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView2"
+                android:id="@+id/username_cardview2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:cardCornerRadius="10dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#6A3DBA"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/username_cardview">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_email_24" />
+
+                    <EditText
+                        android:layout_width="200dp"
+                        android:layout_height="50dp"
+                        android:inputType="text"
+                        android:hint="@string/Email"
+                        android:textColorHint="#A87DF4"
+                        android:lines="1"
+                        android:textColor="@color/white"
+                        android:backgroundTint="#6A3DBA"/>
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/password_cardView"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginStart="50dp"
@@ -91,7 +131,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/username_cardview">
+                app:layout_constraintTop_toBottomOf="@+id/username_cardview2">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -109,8 +149,8 @@
                         android:layout_height="50dp"
                         android:inputType="textPassword"
                         android:lines="1"
-                        android:textColorHint="#A87DF4"
                         android:hint="@string/Password"
+                        android:textColorHint="#A87DF4"
                         android:backgroundTint="#6A3DBA"
                         android:textColor="@color/white" />
 
@@ -119,105 +159,60 @@
 
             </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/forgot_password"
-                android:textColor="#6A3DBA"
-                app:layout_constraintBottom_toTopOf="@+id/loginbutton"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.774"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView2"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <Button
-                android:id="@+id/loginbutton"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/password_cardView2"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginStart="100dp"
-                android:layout_marginEnd="100dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="50dp"
                 android:backgroundTint="#6A3DBA"
-                android:text="@string/login"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:cardCornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView2"
-                app:layout_constraintVertical_bias="0.168" />
+                app:layout_constraintTop_toBottomOf="@+id/password_cardView">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/register"
-                android:id="@+id/signup_btn"
-                android:textColor="#6A3DBA"
-                android:layout_marginEnd="5dp"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-                app:layout_constraintEnd_toStartOf="@+id/textView3"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_lock_24" />
+
+                    <EditText
+                        android:layout_width="200dp"
+                        android:layout_height="50dp"
+                        android:inputType="textPassword"
+                        android:lines="1"
+                        android:hint="@string/confirm_password"
+                        android:textColorHint="#A87DF4"
+                        android:backgroundTint="#6A3DBA"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="100dp"
+                android:backgroundTint="#6A3DBA"
+                android:text="@string/Signup"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/loginbutton"
-                app:layout_constraintVertical_bias="0.642" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="36dp"
-                android:text="@string/or_sign_up_using"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.595"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/loginbutton" />
-
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3">
-
-                <ImageButton
-                    android:id="@+id/fimg"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/fb_logo" />
-
-                <ImageButton
-                    android:id="@+id/timg"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="@drawable/twitter_logo2" />
-
-                <ImageButton
-                    android:id="@+id/gimg"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/google_logo" />
-
-            </LinearLayout>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Change"
-                android:textColor="#6A3DBA"
-                android:id="@+id/change_language"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.486"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-                app:layout_constraintVertical_bias="0.716" />
+                app:layout_constraintTop_toBottomOf="@+id/password_cardView2" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
