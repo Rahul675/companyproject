@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">companyproject1</string>
+
+    <string name="facebook_app_id">1175526953358532</string>
+    <string name="fb_login_protocol_scheme">fb1175526953358532</string>
+    <string name="facebook_client_token">d622fcb3f89f4e310bda889d2c2bff46</string>
+
+<!--    <string name="facebook_app_id">1546070442486065</string>-->
+<!--    <string name="fb_login_protocol_scheme">fb1546070442486065</string>-->
+<!--    <string name="facebook_client_token">8aaa80c61e3f36eaf2bca1e990adbde8</string>-->
+
+</resources>
