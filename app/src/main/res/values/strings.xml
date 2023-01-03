@@ -1,9 +1,13 @@
 <resources>
     <string name="app_name">companyproject1</string>
 
-    <string name="facebook_app_id">1175526953358532</string>
-    <string name="fb_login_protocol_scheme">fb1175526953358532</string>
-    <string name="facebook_client_token">d622fcb3f89f4e310bda889d2c2bff46</string>
+<!--    <string name="facebook_app_id">1175526953358532</string>-->
+<!--    <string name="fb_login_protocol_scheme">fb1175526953358532</string>-->
+<!--    <string name="facebook_client_token">d622fcb3f89f4e310bda889d2c2bff46</string>-->
+
+    <string name="facebook_app_id">1941263666218939</string>
+    <string name="fb_login_protocol_scheme">fb1941263666218939</string>
+    <string name="facebook_client_token">b1dc14fec4547eae0f66081626d15bc3</string>
 
 <!--    <string name="facebook_app_id">1546070442486065</string>-->
 <!--    <string name="fb_login_protocol_scheme">fb1546070442486065</string>-->

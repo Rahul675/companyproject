@@ -67,6 +67,8 @@
                     <EditText
                         android:layout_width="200dp"
                         android:layout_height="50dp"
+                        android:inputType="text"
+                        android:lines="1"
                         android:textColor="@color/white"
                         android:backgroundTint="@color/white"/>
 
@@ -103,6 +105,8 @@
                     <EditText
                         android:layout_width="200dp"
                         android:layout_height="50dp"
+                        android:inputType="textPassword"
+                        android:lines="1"
                         android:backgroundTint="@color/white"
                         android:textColor="@color/white" />
 
@@ -174,22 +178,22 @@
 
                 <ImageButton
                     android:id="@+id/fimg"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:background="@drawable/fb_logo" />
 
                 <ImageButton
                     android:id="@+id/timg"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/twitter_logo2" />
 
                 <ImageButton
                     android:id="@+id/gimg"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:background="@drawable/google_logo" />
 
             </LinearLayout>

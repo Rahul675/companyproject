@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
     GoogleSignInClient gsc;
     FirebaseAuth auth;
     CallbackManager callbackManager;
-    private static final String EMAIL = "email";
     String CLIENT_ID = "746376663225-umjp7fc72tkg4q1amefbvqjntio255nl.apps.googleusercontent.com";
 
     @Override
@@ -58,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(getApplication());
+
 
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(CLIENT_ID)
@@ -79,8 +79,10 @@ public class MainActivity extends AppCompatActivity {
                 new FacebookCallback<LoginResult>() {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
+                        Toast.makeText(MainActivity.this, "enter loginmanager...", Toast.LENGTH_SHORT).show();
                         // App code
                         HomeActivity();
+                        handleFacebookAccessToken(loginResult.getAccessToken());
                         Toast.makeText(MainActivity.this, "homeactivity called...", Toast.LENGTH_SHORT).show();
 //                        startActivityForResult(intent,1001);
                     }
@@ -100,10 +102,34 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "facebook clicked", Toast.LENGTH_SHORT).show();
-                LoginManager.getInstance().logInWithReadPermissions(MainActivity.this, Arrays.asList(EMAIL,"user_birthday"));
+                LoginManager.getInstance().logInWithReadPermissions(MainActivity.this, Arrays.asList("email","public_profile"));
+                Toast.makeText(MainActivity.this, "clicked over...", Toast.LENGTH_SHORT).show();
             }
         });
 
+    }
+
+    private void handleFacebookAccessToken(AccessToken token) {
+        Log.d("TAG", "handleFacebookAccessToken:" + token);
+
+        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
+        auth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d("TAG", "signInWithCredential:success");
+                            FirebaseUser user = auth.getCurrentUser();
+                            HomeActivity();
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w("TAG", "signInWithCredential:failure", task.getException());
+                            Toast.makeText(MainActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 
     private void googlesignin() {
@@ -151,41 +177,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
             }
         }
-//        if (requestCode==1002){
-//            try {
-//                AccessToken accessToken = AccessToken.getCurrentAccessToken();
-//                boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
-////
-//                if (accessToken !=  null) {
-//                    // Got an ID token from Google. Use it to authenticate
-//                    // with Firebase.
-//                    AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
-//                    auth.signInWithCredential(credential)
-//                            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//                                @Override
-//                                public void onComplete(@NonNull Task<AuthResult> task) {
-//                                    if (task.isSuccessful()) {
-//                                        // Sign in success, update UI with the signed-in user's information
-//                                        Log.d("TAG", "signInWithCredential:success");
-//                                        FirebaseUser user = auth.getCurrentUser();
-//                                        HomeActivity();
-//                                    } else {
-//                                        // If sign in fails, display a message to the user.
-//                                        Log.w("TAG", "signInWithCredential:failure", task.getException());
-//                                        Toast.makeText(MainActivity.this, "Authentication failed.",
-//                                                Toast.LENGTH_SHORT).show();
-//                                    }
-//
-//                                }
-//                            });
-//                }else {
-//                    Toast.makeText(this, "Token is null", Toast.LENGTH_SHORT).show();
-//                }
-////
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
     }
 
     private void HomeActivity() {
