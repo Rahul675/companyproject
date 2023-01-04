@@ -69,6 +69,7 @@
                         android:layout_height="50dp"
                         android:inputType="text"
                         android:hint="@string/name"
+                        android:id="@+id/uname"
                         android:textColorHint="#A87DF4"
                         android:lines="1"
                         android:textColor="@color/white"
@@ -111,6 +112,7 @@
                         android:hint="@string/Email"
                         android:textColorHint="#A87DF4"
                         android:lines="1"
+                        android:id="@+id/email"
                         android:textColor="@color/white"
                         android:backgroundTint="#6A3DBA"/>
 
@@ -149,6 +151,7 @@
                         android:layout_height="50dp"
                         android:inputType="textPassword"
                         android:lines="1"
+                        android:id="@+id/pass"
                         android:hint="@string/Password"
                         android:textColorHint="#A87DF4"
                         android:backgroundTint="#6A3DBA"
@@ -189,6 +192,7 @@
                         android:layout_height="50dp"
                         android:inputType="textPassword"
                         android:lines="1"
+                        android:id="@+id/conpass"
                         android:hint="@string/confirm_password"
                         android:textColorHint="#A87DF4"
                         android:backgroundTint="#6A3DBA"
@@ -209,10 +213,23 @@
                 android:layout_marginEnd="100dp"
                 android:backgroundTint="#6A3DBA"
                 android:text="@string/Signup"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/password_cardView2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:id="@+id/loginback"
+                android:text="@string/back_to_login_page"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

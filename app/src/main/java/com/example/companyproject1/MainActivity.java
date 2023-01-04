@@ -14,6 +14,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -49,24 +50,33 @@ public class MainActivity extends AppCompatActivity {
 
     String currentLanguage = "en", currentLang;
     Button loginbtn;
+    EditText username,pass;
     TextView signupbtn,changelang;
     ImageButton googleimage,facebookimage;
     GoogleSignInOptions gso;
     GoogleSignInClient gsc;
     FirebaseAuth auth;
     CallbackManager callbackManager;
+    String adminemailID = "admin@gmail.com";
+    String adminpassword = "345678";
+    String adminusername = "admin";
     String CLIENT_ID = "746376663225-umjp7fc72tkg4q1amefbvqjntio255nl.apps.googleusercontent.com";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        username = findViewById(R.id.username);
+        pass = findViewById(R.id.pass);
         googleimage = findViewById(R.id.gimg);
         facebookimage = findViewById(R.id.fimg);
         signupbtn = findViewById(R.id.signup_btn);
         loginbtn = findViewById(R.id.loginbutton);
         changelang = findViewById(R.id.change_language);
         auth = FirebaseAuth.getInstance();
+
+        String uname = username.getText().toString();
+        String pas = pass.getText().toString();
 
         signupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,8 +89,13 @@ public class MainActivity extends AppCompatActivity {
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,MainActivity2.class);
-                startActivity(intent);
+                if(username.getText().toString().equals(adminusername) || pass.getText().toString().equals(adminpassword)){
+                    startActivity(new Intent(MainActivity.this,MainActivity2.class));
+                }else if (username.getText().toString().isEmpty() || pass.getText().toString().isEmpty()){
+                    Toast.makeText(MainActivity.this, "Empty field", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(MainActivity.this, "Not Found", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
