@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">companyproject1</string>
+    <string name="app_name">Trinity World</string>
 
     <!--    <string name="facebook_app_id">1175526953358532</string>-->
     <!--    <string name="fb_login_protocol_scheme">fb1175526953358532</string>-->
@@ -31,7 +31,10 @@
     <string name="forgot_password">Forgot Password</string>
     <string name="name">Name</string>
     <string name="confirm_password">Confirm Password</string>
-    <string name="back_to_login_page">Back to Login page</string>
+    <string name="back_to">Back to </string>
+    <string name="logout">Logout</string>
+    <string name="enter_your_email_or_mobile">Enter your email or mobile</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
 
 
     <!--    <string name="facebook_app_id">1546070442486065</string>-->

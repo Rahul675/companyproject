@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#6A3DBA"
-    android:orientation="vertical"
-    tools:context=".MainActivity4">
+    tools:context=".formFragment">
 
-    <TextView
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="30dp"
-        android:gravity="center"
-        android:text="Activity 4"/>
+        android:id="@+id/cv2"/>
 
 </LinearLayout>

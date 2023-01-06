@@ -3,9 +3,7 @@ package com.example.companyproject1;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -41,6 +39,7 @@ public class SignupActivity extends AppCompatActivity {
         signupbtn = findViewById(R.id.button);
         loginback = findViewById(R.id.loginback);
         auth = FirebaseAuth.getInstance();
+        getSupportActionBar().hide();
 
         signupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +60,7 @@ public class SignupActivity extends AppCompatActivity {
         loginback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SignupActivity.this,MainActivity.class));
+                startActivity(new Intent(SignupActivity.this, Loginpageactivity.class));
             }
         });
 
@@ -91,10 +90,10 @@ public class SignupActivity extends AppCompatActivity {
                             myRef.child("users").child(task.getResult().getUser().getUid()).child("email").setValue(email.getText().toString());
                             myRef.child("users").child(task.getResult().getUser().getUid()).child("Password").setValue(pass.getText().toString());
                             myRef.child("users").child(task.getResult().getUser().getUid()).child("as").setValue("user");
-                            Toast.makeText(SignupActivity.this, "success",
+                            Toast.makeText(SignupActivity.this, "Signup successfull",
                                     Toast.LENGTH_SHORT).show();
                         }else {
-                            Toast.makeText(SignupActivity.this, "unsuccessful",
+                            Toast.makeText(SignupActivity.this, "Unable to signup",
                                     Toast.LENGTH_SHORT).show();
                         }
                     }

@@ -23,13 +23,30 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class MainActivity4 extends AppCompatActivity {
+public class MainActivity6 extends AppCompatActivity {
 
     String url = "http://www.trinityapplab.in/DemoOneNetwork/checkpoint.php?&empId=9716744965&roleId=10";
     TextView textView;
     RecyclerView recyclerView;
 
     ArrayList<String> arr1 = new ArrayList<>();
+
+    ArrayList<String> s = new ArrayList<>();
+    ArrayList<String> d = new ArrayList<>();
+    ArrayList<String> v = new ArrayList<>();
+    ArrayList<String> t = new ArrayList<>();
+    ArrayList<String> m  = new ArrayList<>();
+    ArrayList<String> e = new ArrayList<>();
+    ArrayList<String> c = new ArrayList<>();
+    ArrayList<String> si = new ArrayList<>();
+    ArrayList<String> sc = new ArrayList<>();
+    ArrayList<String> la = new ArrayList<>();
+    ArrayList<String> ac = new ArrayList<>();
+    ArrayList<String> in = new ArrayList<>();
+    ArrayList<String> lo = new ArrayList<>();
+    ArrayList<String> ingeo = new ArrayList<>();
+    ArrayList<String> action = new ArrayList<>();
+    ArrayList<String> an = new ArrayList<>();
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -63,9 +80,8 @@ public class MainActivity4 extends AppCompatActivity {
                                 String des = jsonObject.getString("description");
                                 String tid = jsonObject.getString("typeId");
                                 String val = jsonObject.getString("value");
-                                String siz = jsonObject.getString("size");
+                                String siz = jsonObject.getString("value");
                                 String edi = jsonObject.getString("editable");
-
                                 String[] valarr = val.split(",");
                                 chkpidarr.add(chkpid);
                                 descri.add(des);
@@ -79,15 +95,48 @@ public class MainActivity4 extends AppCompatActivity {
                         }
                     }
                 }
-                recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity4.this));
-                MainAdapter mainAdapter = new MainAdapter(MainActivity4.this,chkpidarr,descri,typeid,value,size,editable);
+
+                recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity6.this));
+                MainAdapter mainAdapter = new MainAdapter(MainActivity6.this,chkpidarr,descri,typeid,value,size,editable);
                 recyclerView.setAdapter(mainAdapter);
 
+//                ArrayList<String> descri = new ArrayList<>();
+//                ArrayList<String> typeid = new ArrayList<>();
+//
+////                checkpoint_model chm = new checkpoint_model(MainActivity.this);
+////                Toast.makeText(MainActivity.this, ""+response.length(), Toast.LENGTH_SHORT).show();
+//
+//
+//
+//                try {
+//                    for (int i = 0;i<response.length();i++){
+//                        JSONObject jsonObject = response.getJSONObject(i);
+//                        String chkpid = jsonObject.getString("chkpId");
+//                        for (int j=0;j<arr1.size();j++){
+//                            if (chkpid.equals(arr1.get(j))){
+//                                String des = jsonObject.getString("description");
+//                                String tid = jsonObject.getString("typeId");
+//                                descri.add(des);
+//                                typeid.add(tid);
+//                                Toast.makeText(MainActivity6.this, "des: "+des, Toast.LENGTH_SHORT).show();
+////                                Toast.makeText(MainActivity2.this, "des: "+des, Toast.LENGTH_SHORT).show();
+//                            }
+//                        }
+//                    }
+//
+//                    Toast.makeText(MainActivity6.this, "des: "+descri, Toast.LENGTH_SHORT).show();
+//                    recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity6.this));
+//                    MainAdapter mainAdapter = new MainAdapter(MainActivity6.this,arr1,descri,typeid);
+//                    recyclerView.setAdapter(mainAdapter);
+//
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity4.this, "error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity6.this, "error", Toast.LENGTH_SHORT).show();
             }
         });
 

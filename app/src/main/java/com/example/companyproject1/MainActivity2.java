@@ -1,28 +1,21 @@
 package com.example.companyproject1;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,120 +25,139 @@ import java.util.ArrayList;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    TextView name,mail;
-    Button btn;
-    ListView listView;
+    String url = "http://www.trinityapplab.in/DemoOneNetwork/checkpoint.php?&empId=9716744965&roleId=10";
+    TextView textView;
+    RecyclerView recyclerView;
+    ArrayList<String> arr1 = new ArrayList<>();
+    ArrayList<String> chkpid = new ArrayList<>();
 
-    GoogleSignInOptions gso;
-    GoogleSignInClient gsc;
-
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        listView = findViewById(R.id.lv1);
+        textView = findViewById(R.id.tv1);
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        recyclerView = findViewById(R.id.recycler_view);
+        Intent i = getIntent();
+        arr1 = i.getStringArrayListExtra("chkpid1");
 
-        btn = findViewById(R.id.logout);
-
-        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-
-        gsc = GoogleSignIn.getClient(this,gso);
-
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        if (account!=null){
-            String Name = account.getDisplayName();
-            String Mail = account.getEmail();
-
-            name.setText(Name);
-            mail.setText(Mail);
-        }
-
-        btn.setOnClickListener(new View.OnClickListener() {
+        JsonArrayRequest jar = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
-            public void onClick(View v) {
-                signout();
-            }
-        });
+            public void onResponse(JSONArray response) {
 
+                ArrayList<String> chkpidarr = new ArrayList<>();
+                ArrayList<String> descri = new ArrayList<>();
+                ArrayList<String> typeid = new ArrayList<>();
+                ArrayList<String[]> value = new ArrayList<>();
+                ArrayList<String> size = new ArrayList<>();
+                ArrayList<String> editable = new ArrayList<>();
 
-        callApi1(listView);
-
-    }
-
-    private void signout() {
-        gsc.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                FirebaseAuth.getInstance().signOut();
-                finish();
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
-            }
-        });
-    }
-
-
-    public void callApi1(ListView listView){
-        AndroidNetworking.initialize(this);
-        AndroidNetworking.get("http://www.trinityapplab.in/DemoOneNetwork/checklist.php?&empId=9716744965&roleId=10")
-                .setPriority(Priority.HIGH).build()
-                .getAsJSONObject(new JSONObjectRequestListener() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        ArrayList<String> caption1 = new ArrayList<>();
-                        ArrayList<String> icon1 = new ArrayList<>();
-
+                for (int c=0;c<arr1.size();c++){
+                    for (int d=0;d<response.length();d++){
                         try {
-                            JSONArray jsonArray = response.getJSONArray("menu");
-                            for (int i = 0;i<jsonArray.length();i++){
-                                JSONObject obj = jsonArray.getJSONObject(i);
-                                String avatar = obj.getString("Icon");
-                                String str1 = obj.getString("Caption");
-                                caption1.add(str1);
-                                icon1.add(avatar);
-                                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(MainActivity2.this,R.layout.textviewlayout,R.id.tv1,caption1);
-                                listView.setAdapter(arrayAdapter);
-                                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                                    @Override
-                                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                        try {
-                                            ArrayList<String> act2 = new ArrayList<>();
-                                            ArrayList<String> act3 = new ArrayList<>();
-                                            JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                            JSONArray ja = jsonObject.getJSONArray("subCategoryList");
-                                            if (ja.length()==0) {
-                                                String chkpid = jsonObject.getString("checkpointId");
-                                                String[] strarr = chkpid.split(",");
-                                                for (int k=0;k<strarr.length;k++){
-                                                    act2.add(strarr[k]);
-                                                }
-                                                Intent intent = new Intent(MainActivity2.this,MainActivity3.class);
-                                                intent.putStringArrayListExtra("chkpid1",act2);
-//                                                intent.putStringArrayListExtra("descrip",descrip);
-                                                startActivity(intent);
-                                            }else {
-                                                act3.add(ja.toString());
-                                                Intent intent = new Intent(MainActivity2.this,MainActivity4.class);
-                                                intent.putStringArrayListExtra("jsonarray",act3);
-                                                startActivity(intent);
+                            JSONObject jsonObject = response.getJSONObject(d);
+                            String chkpid = jsonObject.getString("chkpId");
+                            if (chkpid.equals(arr1.get(c))){
+//                                Toast.makeText(MainActivity4.this, "chkpid: "+chkpid, Toast.LENGTH_SHORT).show();
+                                String des = jsonObject.getString("description");
+                                String tid = jsonObject.getString("typeId");
+                                String val = jsonObject.getString("value");
+                                String siz = jsonObject.getString("size");
+                                String edi = jsonObject.getString("editable");
 
-                                            }
-                                        } catch (JSONException e) {
-                                            e.printStackTrace();
-                                        }
-                                    }
-                                });
+                                String[] valarr = val.split(",");
+                                chkpidarr.add(chkpid);
+                                descri.add(des);
+                                typeid.add(tid);
+                                value.add(valarr);
+                                size.add(siz);
+                                editable.add(edi);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            Toast.makeText(MainActivity2.this, "e: "+e, Toast.LENGTH_SHORT).show();
                         }
                     }
+                }
+                recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity2.this));
+                MainAdapter mainAdapter = new MainAdapter(MainActivity2.this,chkpidarr,descri,typeid,value,size,editable);
+                recyclerView.setAdapter(mainAdapter);
 
-                    @Override
-                    public void onError(ANError anError) {
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MainActivity2.this, "error" + error, Toast.LENGTH_SHORT).show();
+            }
+        });
 
-                    }
-                });
+        requestQueue.add(jar);
+
+
+//        AndroidNetworking.initialize(this);
+//        AndroidNetworking.get("http://www.trinityapplab.in/DemoOneNetwork/checkpoint.php?&empId=9716744965&roleId=10")
+//                .setPriority(Priority.HIGH)
+//                .build()
+//                .getAsJSONArray(new JSONArrayRequestListener() {
+//                    @Override
+//                    public void onResponse(JSONArray response) {
+//                        for (int j = 0;j<response.length();j++){
+//                            try {
+//                                JSONObject jo = response.getJSONObject(j);
+//                                String ss = jo.getString("chkpId");
+////                                s.add(ss);
+//                                String tt = jo.getString("typeId");
+////                                t.add(tt);
+//                                String dd = jo.getString("description");
+////                                d.add(dd);
+//                            } catch (JSONException e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
+//                        for (int i = 0;i<ar.length;i++){
+//                            String cid = String.valueOf(ar[i]);
+//
+//                            for (int j = 0;j<response.length();j++){
+//                                try {
+//                                    JSONObject jo1 = response.getJSONObject(j);
+//                                    String sid = jo1.getString("chkpId");
+//                                    if(cid.equals(sid)){
+//                                        String tid = jo1.getString("typeId");
+////                                        Toast.makeText(MainActivity4.this, "tid: "+tid, Toast.LENGTH_SHORT).show();
+//                                        if (tid.equals("1")||tid.equals("13")||tid.equals("14")){
+//                                            String did = jo1.getString("description");
+////                                            darr.add(did);
+//                                        }
+//                                        if(tid.equals("4")){
+//                                            String did = jo1.getString("description");
+//                                            String arl = jo1.getString("value");
+////                                            stsa(arl);
+//                                            for(int l = 0;l<ar1.length;l++){
+//                                                String aid = String.valueOf(ar1[l]);
+//                                                arlist.add(aid);
+//                                            }
+//                                            Toast.makeText(MainActivity.this, "arlist: "+arlist, Toast.LENGTH_SHORT).show();
+//                                        }
+//                                    }
+//                                } catch (JSONException e) {
+//                                    e.printStackTrace();
+//                                }
+//                            }
+//                        }
+//
+////                        ArrayAdapter aradapter1 = new ArrayAdapter(getApplicationContext(), R.layout.act4layout, R.id.altv, darr);
+////                        listView.setAdapter(aradapter1);
+////                        Toast.makeText(MainActivity4.this, "value: "+arlist.size(), Toast.LENGTH_SHORT).show();
+////                        ArrayAdapter aradapter2 = new ArrayAdapter(getApplicationContext(), R.layout.chblayout, R.id.chbtv, arlist);
+////                        listView2.setAdapter(aradapter2);
+//                    }
+//
+//                    @Override
+//                    public void onError(ANError anError) {
+//
+//                    }
+//                });
+
     }
 }
