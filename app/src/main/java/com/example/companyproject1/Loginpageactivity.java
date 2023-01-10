@@ -43,6 +43,9 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 import com.google.firebase.auth.OAuthProvider;
+import com.shantanudeshmukh.linkedinsdk.LinkedInAuthenticationActivity;
+import com.shantanudeshmukh.linkedinsdk.LinkedInBuilder;
+import com.shantanudeshmukh.linkedinsdk.helpers.LinkedInUser;
 
 import java.util.Arrays;
 import java.util.Locale;
@@ -59,6 +62,10 @@ public class Loginpageactivity extends AppCompatActivity {
     GoogleSignInClient gsc;
     FirebaseAuth auth;
     CallbackManager callbackManager;
+    private static final String LINKEDIN_CLIENT_ID = "772jdy8slouwtp";
+    private static final String LINKEDIN_CLIENT_SECRET = "CTFU8cFRRxxDpJLQ";
+    private static final String LINKEDIN_REDIRECTION_URL = "https://www.linkedin.com/developers/tools/oauth/redirect";
+    private static final int LINKEDIN_REQUEST_CODE = 1005;
     String adminemailID = "admin@gmail.com";
     String adminpassword = "345678";
     String adminusername = "admin";
@@ -114,7 +121,11 @@ public class Loginpageactivity extends AppCompatActivity {
         linkedinimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                LinkedInBuilder.getInstance(Loginpageactivity.this)
+                        .setClientID(LINKEDIN_CLIENT_ID)
+                        .setClientSecret(LINKEDIN_CLIENT_SECRET)
+                        .setRedirectURI(LINKEDIN_REDIRECTION_URL)
+                        .authenticate(LINKEDIN_REQUEST_CODE);
             }
         });
 
@@ -334,6 +345,31 @@ public class Loginpageactivity extends AppCompatActivity {
                 Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
             }
         }
+
+        if (requestCode == LINKEDIN_REQUEST_CODE && data != null) {
+            if (resultCode == RESULT_OK) {
+                //Successfully signed in
+                LinkedInUser user = data.getParcelableExtra("social_login");
+                //acessing user info
+                Log.i("LinkedInLogin", user.getFirstName());
+                if (user != null){
+                    startActivity(new Intent(Loginpageactivity.this,MainActivity.class));
+                    Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+                }
+
+
+            } else {
+
+                if (data.getIntExtra("err_code", 0) == LinkedInBuilder.ERROR_USER_DENIED) {
+                    //Handle : user denied access to account
+
+                } else if (data.getIntExtra("err_code", 0) == LinkedInBuilder.ERROR_FAILED) {
+
+                    //Handle : Error in API : see logcat output for details
+                    Log.e("LINKEDIN ERROR", data.getStringExtra("err_message"));
+                }
+            }
+        }
     }
 
     private void HomeActivity() {
@@ -342,4 +378,16 @@ public class Loginpageactivity extends AppCompatActivity {
         Intent intent = new Intent(Loginpageactivity.this,MainActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = auth.getCurrentUser();
+        if (currentUser!=null){
+            Intent intent = new Intent(Loginpageactivity.this,MainActivity.class);
+            startActivity(intent);
+        }
+    }
+
 }

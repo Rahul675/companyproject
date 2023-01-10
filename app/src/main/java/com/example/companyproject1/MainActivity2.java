@@ -3,9 +3,13 @@ package com.example.companyproject1;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -159,5 +164,23 @@ public class MainActivity2 extends AppCompatActivity {
 //                    }
 //                });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.items, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.logout:
+                FirebaseAuth.getInstance().signOut();
+//                setContentView(R.layout.loginpage_layout);
+                startActivity(new Intent(this,Loginpageactivity.class));
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -16,16 +16,28 @@
         android:layout_marginEnd="15dp"
         android:elevation="0dp"
         app:cardElevation="0dp"
-        android:backgroundTint="@color/grey">
+        android:backgroundTint="@color/white">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:background="@color/white"
-            android:textColor="#6A3DBA"
-            android:textSize="20sp"
-            android:id="@+id/tv1"/>
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/iat_iv"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:background="@color/white"
+                android:textColor="#6A3DBA"
+                android:textSize="20sp"
+                android:id="@+id/iat_tv"/>
+
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 

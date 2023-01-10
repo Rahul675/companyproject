@@ -1,27 +1,35 @@
 package com.example.companyproject1;
 
+import static com.facebook.FacebookSdk.getApplicationContext;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.RequestCreator;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 public class android_networking_connection {
     Context context;
+    ArrayList<String> caption1 = new ArrayList<>();
+    ArrayList<String> icon1 = new ArrayList<>();
 
     public android_networking_connection(Context context) {
         this.context = context;
@@ -34,8 +42,6 @@ public class android_networking_connection {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        ArrayList<String> caption1 = new ArrayList<>();
-                        ArrayList<String> icon1 = new ArrayList<>();
 
                         try {
                             JSONArray jsonArray = response.getJSONArray("menu");
@@ -45,40 +51,9 @@ public class android_networking_connection {
                                 String str1 = obj.getString("Caption");
                                 caption1.add(str1);
                                 icon1.add(avatar);
-                                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(context,R.layout.textviewlayout,R.id.tv1,caption1);
-                                listView.setAdapter(arrayAdapter);
-                                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                                    @Override
-                                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                        try {
-                                            ArrayList<String> act2 = new ArrayList<>();
-                                            ArrayList<String> act3 = new ArrayList<>();
-                                            JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                            JSONArray ja = jsonObject.getJSONArray("subCategoryList");
-                                            if (ja.length()==0) {
-                                                String chkpid = jsonObject.getString("checkpointId");
-                                                String[] strarr = chkpid.split(",");
-                                                for (int k=0;k<strarr.length;k++){
-                                                    act2.add(strarr[k]);
-                                                }
-                                                Intent intent = new Intent(context,MainActivity2.class);
-                                                intent.putStringArrayListExtra("chkpid1",act2);
-//                                                intent.putStringArrayListExtra("descrip",descrip);
-                                                context.startActivity(intent);
-                                            }else {
-                                                act3.add(ja.toString());
-                                                Intent intent = new Intent(context,MainActivity3.class);
-                                                intent.putStringArrayListExtra("jsonarray",act3);
-                                                context.startActivity(intent);
-
-                                            }
-                                        } catch (JSONException e) {
-                                            e.printStackTrace();
-                                            Toast.makeText(context, "e: "+e, Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                });
                             }
+                            CustomAdapter customAdapter = new CustomAdapter(context,caption1,icon1);
+                            listView.setAdapter(customAdapter);
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(context, "e: "+e, Toast.LENGTH_SHORT).show();
