@@ -9,10 +9,9 @@
     <string name="fb_login_protocol_scheme" translatable="false">fb1941263666218939</string>
     <string name="facebook_client_token" translatable="false">b1dc14fec4547eae0f66081626d15bc3</string>
 
-<!--    <string name="linkedin_client_id" translatable="false">772jdy8slouwtp</string>-->
-<!--    <string name="linkedin_client_secret" translatable="false">CTFU8cFRRxxDpJLQ</string>-->
-<!--    <string name="linkedin_redirection_url" translatable="false">GATXUWWYDFFHN4SK64F6H3X6UVUCRGMR6BXJ4JAPT2MMG5QI5VRQLQNE</string>-->
-
+    <!--    <string name="linkedin_client_id" translatable="false">772jdy8slouwtp</string>-->
+    <!--    <string name="linkedin_client_secret" translatable="false">CTFU8cFRRxxDpJLQ</string>-->
+    <!--    <string name="linkedin_redirection_url" translatable="false">GATXUWWYDFFHN4SK64F6H3X6UVUCRGMR6BXJ4JAPT2MMG5QI5VRQLQNE</string>-->
 
 
     <string name="Email">Email</string>

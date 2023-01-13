@@ -17,6 +17,8 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.google.android.material.imageview.ShapeableImageView;
+import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -129,7 +131,7 @@ public class CustomAdapter implements ListAdapter {
             });
 
             TextView tittle = convertView.findViewById(R.id.iat_tv);
-            ImageView imag = convertView.findViewById(R.id.iat_iv);
+            ShapeableImageView imag = convertView.findViewById(R.id.iat_iv);
             tittle.setText(caption.get(position));
             Picasso.get().load(icon.get(position)).into(imag);
 

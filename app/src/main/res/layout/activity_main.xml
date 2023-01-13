@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/gradients4"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
 <!--    <com.google.android.material.appbar.AppBarLayout-->
@@ -26,14 +26,86 @@
 <!--    </com.google.android.material.appbar.AppBarLayout>-->
 
     <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:layout_marginTop="-30dp"
+        app:cardCornerRadius="25dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/untitleddesign"
+            android:orientation="vertical">
+
+                        <com.google.android.material.appbar.AppBarLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="60dp"
+                            android:elevation="0dp"
+                            app:elevation="0dp"
+                            android:gravity="center"
+                            android:backgroundTint="@android:color/transparent">
+
+                            <androidx.appcompat.widget.Toolbar
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:iconTint="@color/black"
+                                android:gravity="center"
+                                android:theme = "@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
+                                android:id="@+id/main_toolbar">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="70dp"
+                                        android:layout_height="70dp"
+                                        android:src="@drawable/trinitylogo"/>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:layout_weight="1"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="70dp"
+                                            android:text="Trinity World"
+                                            android:gravity="center"
+                                            android:textSize="23dp"
+                                            android:textColor="@color/white"/>
+
+                                        <Spinner
+                                            android:layout_width="40dp"
+                                            android:layout_height="40dp"
+                                            android:layout_gravity="center"
+                                            android:layout_marginEnd="15dp"
+                                            android:background="@drawable/ic_baseline_menu_24"/>
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                            </androidx.appcompat.widget.Toolbar>
+
+                        </com.google.android.material.appbar.AppBarLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
         android:id="@+id/cv1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="100dp"
-        android:backgroundTint="#5B4E4545"
+        android:paddingBottom="100dp"
+        android:backgroundTint="@android:color/transparent"
         app:cardCornerRadius="15dp"
         android:elevation="0dp"
         app:cardElevation="0dp">
@@ -42,7 +114,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:padding="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
             android:layout_gravity="center"
             android:orientation="vertical">
 

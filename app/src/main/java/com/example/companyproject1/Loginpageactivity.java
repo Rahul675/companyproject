@@ -374,20 +374,25 @@ public class Loginpageactivity extends AppCompatActivity {
 
     private void HomeActivity() {
         finish();
-        Toast.makeText(this, "calling mainactivity2...", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(Loginpageactivity.this,MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+        Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = auth.getCurrentUser();
-        if (currentUser!=null){
-            Intent intent = new Intent(Loginpageactivity.this,MainActivity.class);
-            startActivity(intent);
-        }
-    }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        // Check if user is signed in (non-null) and update UI accordingly.
+//
+//    }
 
+
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        finish();
+//        System.exit(0);
+//        return;
+//    }
 }

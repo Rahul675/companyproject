@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradients4"
+    android:background="#6A00F4"
     android:fitsSystemWindows="true"
     tools:context=".Loginpageactivity">
 
@@ -15,7 +15,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         app:cardCornerRadius="15dp"
         android:outlineSpotShadowColor="@color/black"
         android:outlineAmbientShadowColor="@color/black"
@@ -25,7 +25,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/gradients4">
+            android:background="@color/white">
 
 
             <TextView
@@ -35,10 +35,10 @@
                 android:layout_marginTop="32dp"
                 android:gravity="center"
                 android:text="@string/don_t_have_an_account"
+                android:textColor="#6A00F4"
                 android:textSize="16dp"
-                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.41"
+                app:layout_constraintHorizontal_bias="0.35"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
@@ -50,7 +50,7 @@
                 android:text="@string/login"
                 android:textSize="30dp"
                 android:gravity="center"
-                android:textColor="@color/white"
+                android:textColor="#6A00F4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +66,7 @@
                 android:layout_marginTop="50dp"
                 android:elevation="0dp"
                 app:cardElevation="0dp"
-                android:backgroundTint="@color/grey"
+                android:backgroundTint="#6A00F4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -90,7 +90,7 @@
                         android:lines="1"
                         android:id="@+id/username"
                         android:hint="@string/Username"
-                        android:textColorHint="#70FFFFFF"
+                        android:textColorHint="@color/white"
                         android:textColor="@color/white"
                         android:backgroundTint="@android:color/transparent"/>
 
@@ -107,7 +107,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="50dp"
                 android:elevation="0dp"
-                android:backgroundTint="@color/grey"
+                android:backgroundTint="#6A00F4"
                 app:cardElevation="0dp"
                 app:cardCornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -133,7 +133,7 @@
                         android:inputType="textPassword"
                         android:lines="1"
                         android:id="@+id/pass"
-                        android:textColorHint="#70FFFFFF"
+                        android:textColorHint="@color/white"
                         android:hint="@string/Password"
                         android:backgroundTint="@android:color/transparent"
                         android:textColor="@color/white" />
@@ -148,14 +148,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/forgot_password"
+                android:textColor="@color/com_facebook_blue"
                 android:textSize="16dp"
-                android:textColor="@color/themecolor"
-                app:layout_constraintBottom_toTopOf="@+id/loginbutton"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.774"
+                app:layout_constraintHorizontal_bias="0.767"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView2"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
             <Button
                 android:id="@+id/loginbutton"
@@ -164,7 +162,7 @@
                 android:layout_marginStart="100dp"
                 android:layout_marginEnd="100dp"
                 android:elevation="0dp"
-                android:backgroundTint="@color/themecolor"
+                android:backgroundTint="#6A00F4"
                 android:text="@string/login"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -183,7 +181,7 @@
                 android:layout_marginStart="5dp"
                 android:text="@string/Signup"
                 android:textSize="16dp"
-                android:textColor="@color/themecolor"
+                android:textColor="@color/com_facebook_blue"
                 app:layout_constraintStart_toEndOf="@+id/textView2"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
@@ -194,7 +192,7 @@
                 android:layout_marginTop="36dp"
                 android:text="@string/or_sign_up_using"
                 android:textSize="16dp"
-                android:textColor="@color/white"
+                android:textColor="#6A00F4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
@@ -212,8 +210,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView3">
 
+<!--                <ImageButton-->
+<!--                    android:id="@+id/otpimg"-->
+<!--                    android:layout_width="40dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:background="@drawable/password"/>-->
+
                 <ImageButton
                     android:id="@+id/fimg"
+                    android:layout_marginStart="10dp"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/fb_logo" />
@@ -246,7 +251,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/Change"
                 android:textSize="16dp"
-                android:textColor="@color/themecolor"
+                android:textColor="@color/com_facebook_blue"
                 android:id="@+id/change_language"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

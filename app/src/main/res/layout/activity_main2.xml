@@ -5,19 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/gradients4"
+    android:background="#6A00F4"
     tools:context=".MainActivity2">
 
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv1"
+        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
         android:layout_marginTop="100dp"
-        android:layout_marginBottom="80dp"
-        android:backgroundTint="#5B4E4545"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/white"
         app:cardCornerRadius="15dp"
         android:elevation="0dp"
         app:cardElevation="0dp">
@@ -41,5 +42,17 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <Button
+        android:layout_weight="7"
+        android:id="@+id/submitbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
+        android:layout_gravity="end"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/white"
+        android:text="Next"
+        android:textColor="#6A00F4" />
 
 </LinearLayout>

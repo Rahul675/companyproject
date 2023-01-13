@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/gradients4"
+    android:background="#6A00F4"
     tools:context=".MainActivity3">
 
     <androidx.cardview.widget.CardView
@@ -16,7 +16,7 @@
         android:layout_marginEnd="15dp"
         android:layout_marginTop="100dp"
         android:layout_marginBottom="100dp"
-        android:backgroundTint="#5B4E4545"
+        android:backgroundTint="@color/white"
         app:cardCornerRadius="15dp"
         android:elevation="0dp"
         app:cardElevation="0dp">

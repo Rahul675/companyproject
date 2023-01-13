@@ -7,42 +7,33 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/lout">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="15dp"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Check box"
-            android:textSize="15dp"
-            android:id="@+id/tv_name"/>
+            android:orientation="horizontal"
+            android:id="@+id/lout">
 
+            <TextView
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Check box"
+                android:textColor="#6A00F4"
+                android:textSize="18dp"
+                android:id="@+id/tv_name"/>
 
-<!--        <androidx.cardview.widget.CardView-->
-<!--            android:id="@+id/cv"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="15dp"-->
-<!--            android:layout_marginEnd="15dp"-->
-<!--            android:layout_marginBottom="15dp"-->
-<!--            app:cardCornerRadius="10dp">-->
+        </LinearLayout>
 
-<!--        </androidx.cardview.widget.CardView>-->
-
-
-<!--        <CheckBox-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"/>-->
-<!--        <CheckBox-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"/>-->
-
-
-
-<!--        </androidx.cardview.widget.CardView>-->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="50dp"
+            android:id="@+id/gout"/>
 
     </LinearLayout>
 

@@ -19,6 +19,7 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -49,7 +50,7 @@ public class android_networking_connection {
                                 JSONObject obj = jsonArray.getJSONObject(i);
                                 String avatar = obj.getString("Icon");
                                 String str1 = obj.getString("Caption");
-                                caption1.add(str1);
+                                caption1.add(StringUtils.capitalize(str1));
                                 icon1.add(avatar);
                             }
                             CustomAdapter customAdapter = new CustomAdapter(context,caption1,icon1);

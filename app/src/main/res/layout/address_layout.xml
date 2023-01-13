@@ -31,6 +31,7 @@
                 android:maxLength="200"
                 android:singleLine="false"
                 android:hint="address"
+                android:textColorHint="@color/black"
                 android:backgroundTint="@color/white"/>
 
         </androidx.cardview.widget.CardView>

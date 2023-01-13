@@ -7,7 +7,9 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Build;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,17 +18,23 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
+import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.gcacace.signaturepad.views.SignaturePad;
+
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -84,11 +92,15 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             String s = "1";
 
             if (size.get(viewType).equals("0")){
-                LinearLayout linearLayout = view.findViewById(R.id.lout);
+                GridLayout gridLayout = view.findViewById(R.id.gout);
                 for (int i=0;i<v.length;i++){
+                    LinearLayout.LayoutParams checkParams = new LinearLayout.LayoutParams(
+                            ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    checkParams.setMargins(10, 10, 70, 10);
+                    checkParams.gravity = Gravity.CENTER;
                     CheckBox checkBox = new CheckBox(context);
                     checkBox.setText(v[i]);
-                    linearLayout.addView(checkBox);
+                    gridLayout.addView(checkBox,checkParams);
                     if (editable.get(viewType).equals("0")){
                         checkBox.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -117,6 +129,15 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
         }else if (typeId.get(viewType).equals("5")){
             View view = layoutInflater.inflate(R.layout.camera_layout, parent, false);
+            LinearLayout linearLayout = view.findViewById(R.id.camera_iv);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(100,100);
+//            int s = Integer.getInteger(size.get(viewType));
+            int s = Integer.parseInt(size.get(viewType));
+            for (int i=0;i<s;i++){
+                ImageView imageView = new ImageView(context);
+                imageView.setImageDrawable(context.getDrawable(R.drawable.ic_baseline_photo_camera_24));
+                linearLayout.addView(imageView,lp);
+            }
             return new viewHolder(view);
         }else if (typeId.get(viewType).equals("6")){
             View view = layoutInflater.inflate(R.layout.signature_layout, parent, false);
@@ -167,7 +188,7 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             View view = layoutInflater.inflate(R.layout.video_capture_checkpoint_layout, parent, false);
             return new viewHolder(view);
         }else if (typeId.get(viewType).equals("13")){
-            View view = layoutInflater.inflate(R.layout.address_layout, parent, false);
+            View view = layoutInflater.inflate(R.layout.adress_with_location_layout, parent, false);
             return new viewHolder(view);
         }else if (typeId.get(viewType).equals("14")){
             View view = layoutInflater.inflate(R.layout.mail_id_layout, parent, false);
@@ -207,7 +228,10 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
         TextView t = holder.itemView.findViewById(R.id.tv_name);
-        t.setText(description.get(position));
+        StringUtils.capitalize(description.get(position));
+        t.setText(String.valueOf(position+1)+". "+description.get(position));
+        t.setTextColor(Color.parseColor("#6A00F4"));
+        t.setTextSize(17);
         TextView e = holder.itemView.findViewById(R.id.datetv1);
 
 //        if (checkpointid.get(position).equals("19")){
@@ -241,18 +265,19 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 //        }
 
         if(typeId.get(position).equals("7")){
-            Button btn = holder.itemView.findViewById(R.id.datebtn);
+            ImageView btn = holder.itemView.findViewById(R.id.datebtn);
             final Calendar calendar = Calendar.getInstance();
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            e.setText(day+"/"+(month+1)+"/"+year);
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int year = calendar.get(Calendar.YEAR);
-                    int month = calendar.get(Calendar.MONTH);
-                    int day = calendar.get(Calendar.DAY_OF_MONTH);
                     DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
                         @Override
                         public void onDateSet(DatePicker datePicker, int y, int m, int d) {
-                            e.setText(d+"/"+m+"/"+y);
+                            e.setText(d+"/"+(m+1)+"/"+y);
                         }
                     },year,month,day);
                     datePickerDialog.show();

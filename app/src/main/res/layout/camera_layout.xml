@@ -20,20 +20,24 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="15dp"
-            app:cardCornerRadius="10dp">
+            app:cardCornerRadius="10dp"
+            android:id="@+id/camera_cv">
 
-            <EditText
-                android:layout_marginTop="2dp"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:inputType="textPersonName"
-                android:backgroundTint="@color/white"
-                android:hint="Camera"
-                android:id="@+id/et1"/>
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:id="@+id/camera_iv"/>
+
+<!--            <ImageView-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:src="@drawable/ic_baseline_photo_camera_24"/>-->
 
         </androidx.cardview.widget.CardView>
 

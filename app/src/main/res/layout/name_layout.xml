@@ -32,6 +32,7 @@
                 android:inputType="textPersonName"
                 android:backgroundTint="@color/white"
                 android:hint="name"
+                android:textColorHint="@color/black"
                 android:lineHeight="0dp"
                 android:id="@+id/et1"/>
 

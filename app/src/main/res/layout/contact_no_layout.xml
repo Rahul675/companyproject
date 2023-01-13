@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
                 android:hint="contact"
+                android:textColorHint="@color/black"
                 android:inputType="number"/>
 
         </androidx.cardview.widget.CardView>

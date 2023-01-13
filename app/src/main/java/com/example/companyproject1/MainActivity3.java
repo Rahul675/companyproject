@@ -11,12 +11,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,7 +46,7 @@ public class MainActivity3 extends AppCompatActivity {
                 JSONObject jsonObject = jsonArray.getJSONObject(j);
                 String caption = jsonObject.getString("Caption");
                 String icon = jsonObject.getString("Icon");
-                caption2.add(caption);
+                caption2.add(StringUtils.capitalize(caption));
                 icon2.add(icon);
 //                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //                    @Override
@@ -78,6 +80,7 @@ public class MainActivity3 extends AppCompatActivity {
                 FirebaseAuth.getInstance().signOut();
 //                setContentView(R.layout.loginpage_layout);
                 startActivity(new Intent(this,Loginpageactivity.class));
+                Toast.makeText(this, "Logout Successful", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
     }
