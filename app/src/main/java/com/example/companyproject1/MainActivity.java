@@ -13,16 +13,22 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
     CardView cardView;
     Toolbar toolbar;
     Boolean login;
+    Spinner spinner;
+    List<String> spinnerArray =  new ArrayList<String>();
+
+//    ArrayList<String> spinitem;
     boolean doubleBackToExitPressedOnce = false;
     @SuppressLint("RestrictedApi")
     @Override
@@ -39,8 +49,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         listView = findViewById(R.id.lv1);
         cardView = findViewById(R.id.cv1);
+//        toolbar = findViewById(R.id.main_toolbar);
+//        toolbar.inflateMenu(R.menu.items);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerArray);
+//
+//        adapter.setDropDownViewResource(
+//                android.R.layout.simple_spinner_dropdown_item);
+//        spinner.setAdapter(adapter);
+
+//        spinitem.add("Logout");
+//        ArrayAdapter aa = new ArrayAdapter(this,R.menu.items,spinitem);
+//        spinner.setAdapter(aa);
 //        getActionBar().hide();
 //        toolbar = findViewById(R.id.main_toolbar);
+//        setSupportActionBar(toolbar);
 //        setSupportActionBar(toolbar);
 //        setSupportActionBar(toolbar);
         getSupportActionBar().hide();
@@ -57,11 +79,11 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.items, menu);
 
-        int positionOfMenuItem = 0; // or whatever...
-        MenuItem item = menu.getItem(positionOfMenuItem);
-        SpannableString s = new SpannableString("Logout");
-        s.setSpan(new ForegroundColorSpan(Color.BLACK), 0, s.length(), 0);
-        item.setTitle(s);
+//        int positionOfMenuItem = 0; // or whatever...
+//        MenuItem item = menu.getItem(positionOfMenuItem);
+//        SpannableString s = new SpannableString("Logout");
+//        s.setSpan(new ForegroundColorSpan(Color.BLACK), 0, s.length(), 0);
+//        item.setTitle(s);
         return true;
     }
 

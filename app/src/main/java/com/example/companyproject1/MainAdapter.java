@@ -67,7 +67,7 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return checkpointid;
     }
 
-    @SuppressLint("ClickableViewAccessibility")
+    @SuppressLint({"ClickableViewAccessibility", "MissingInflatedId"})
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -76,6 +76,7 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         if (typeId.get(viewType).equals("1")){
             View view = layoutInflater.inflate(R.layout.name_layout, parent, false);
+
             return new viewHolder(view);
         }else if (typeId.get(viewType).equals("2")){
             View view = layoutInflater.inflate(R.layout.address_layout, parent, false);
@@ -88,7 +89,6 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             View view1 = layoutInflater.inflate(R.layout.radiobtn_layout, parent, false);
             String[] v = null;
             v = value.get(viewType);
-            RadioGroup radioGroup = view1.findViewById(R.id.radiogroup);
             String s = "1";
 
             if (size.get(viewType).equals("0")){
@@ -96,10 +96,11 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 for (int i=0;i<v.length;i++){
                     LinearLayout.LayoutParams checkParams = new LinearLayout.LayoutParams(
                             ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                    checkParams.setMargins(10, 10, 70, 10);
+                    checkParams.setMargins(10, 10, 10, 10);
                     checkParams.gravity = Gravity.CENTER;
                     CheckBox checkBox = new CheckBox(context);
                     checkBox.setText(v[i]);
+                    checkBox.setTextSize(12);
                     gridLayout.addView(checkBox,checkParams);
                     if (editable.get(viewType).equals("0")){
                         checkBox.setOnClickListener(new View.OnClickListener() {
@@ -113,14 +114,29 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 return new viewHolder(view);
             }else {
                 for (int j=0;j<v.length;j++){
+                    LinearLayout.LayoutParams checkParams = new LinearLayout.LayoutParams(
+                            ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    checkParams.setMargins(10, 10, 10, 10);
+                    checkParams.gravity = Gravity.CENTER;
+                    RadioGroup radioGroup = view1.findViewById(R.id.radiogroup);
                     RadioButton radioButton = new RadioButton(context);
                     radioButton.setText(v[j]);
+                    radioButton.setTextSize(12);
                     radioGroup.addView(radioButton);
+//                    radioGroup.addView(gridLayout);
+                    radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                        }
+                    });
+//                    radioGroup.addView(radioButton,checkParams);
                     if (editable.get(viewType).equals("0")){
                         radioButton.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 radioGroup.clearCheck();
+                                Toast.makeText(context, "rg1", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
