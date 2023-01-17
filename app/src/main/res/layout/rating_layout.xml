@@ -26,15 +26,16 @@
             android:layout_marginBottom="15dp"
             app:cardCornerRadius="10dp">
 
-            <EditText
-                android:layout_marginTop="2dp"
+            <GridLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:backgroundTint="@color/white"
-                android:hint="Rating"
-                android:lineHeight="0dp"
-                android:id="@+id/et1"/>
+                android:layout_height="wrap_content">
+
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ratingbar"/>
+
+            </GridLayout>
 
         </androidx.cardview.widget.CardView>
 

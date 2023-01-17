@@ -26,15 +26,11 @@
             android:layout_marginBottom="15dp"
             app:cardCornerRadius="10dp">
 
-            <EditText
-                android:layout_marginTop="2dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:backgroundTint="@color/white"
-                android:hint="FingerPrint Checkpoint"
-                android:lineHeight="0dp"
-                android:id="@+id/et1"/>
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_baseline_fingerprint_24"/>
 
         </androidx.cardview.widget.CardView>
 

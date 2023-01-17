@@ -20,18 +20,25 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="15dp"
             app:cardCornerRadius="10dp"
             android:id="@+id/camera_cv">
 
-            <LinearLayout
+            <GridLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:columnCount="5"
                 android:id="@+id/camera_iv"/>
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:columnCount="5"
+                android:id="@+id/camera_iv_iv"/>
 
 <!--            <ImageView-->
 <!--                android:layout_width="50dp"-->
