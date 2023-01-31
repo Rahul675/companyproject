@@ -2,6 +2,11 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="10dp"
+    android:elevation="0dp"
+    app:cardElevation="0dp"
+    android:backgroundTint="@android:color/transparent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
@@ -10,6 +15,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:layout_marginTop="10dp"
             android:layout_marginStart="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -19,7 +25,9 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
             app:cardCornerRadius="10dp">
 
             <EditText
@@ -31,7 +39,8 @@
                 android:maxLength="200"
                 android:singleLine="false"
                 android:hint="address"
-                android:textColorHint="@color/black"
+                android:textSize="14dp"
+                android:textColorHint="@color/textcolorhint"
                 android:backgroundTint="@color/white"/>
 
         </androidx.cardview.widget.CardView>

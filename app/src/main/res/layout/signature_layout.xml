@@ -2,6 +2,11 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="10dp"
+    android:elevation="0dp"
+    app:cardElevation="0dp"
+    android:backgroundTint="@android:color/transparent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
@@ -39,6 +44,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:id="@+id/signature_pad"/>
+
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="60dp"
+                android:id="@+id/clearsign"
+                android:background="@drawable/ic_baseline_cancel_24"/>
 
         </androidx.cardview.widget.CardView>
 

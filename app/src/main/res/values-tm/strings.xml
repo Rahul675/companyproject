@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">பன்மொழி</string>
+    <string name="Email">மின்னஞ்சல்</string>
+    <string name="Password">கடவுச்சொல்</string>
+    <string name="Rememberme">என்னை நினைவில் கொள்க</string>
+    <string name="Username">பயனீட்டாளர்</string>
+    <string name="Change">மொழியை மாற்றவும்</string>
+    <string name="Signup">பாடுங்கள்</string>
+    <string name="email">மின்னஞ்சல்</string>
+    <string name="signout">வெளியேறு</string>
+    <string name="newEmail">புதிய மின்னஞ்சல்</string>
+    <string name="already" translatable="false">மொழி ஏற்கனவே தேர்ந்தெடுக்கப்பட்டது!</string>
+    <string name="Success">உள்நுழைவு வெற்றிகரமாக உள்ளது</string>
+    <string name="SuccessSign">பதிவு வெற்றி!!</string>
+    <string name="Failed">தவறான மின்னஞ்சல் அல்லது கடவுச்சொல்</string>
+    <string name="or_sign_up_using">அல்லது பின்வருவனவற்றைப் பயன்படுத்தவும்</string>
+    <string name="register">பதிவு</string>
+    <string name="login">உள்நுழைய</string>
+    <string name="forgot_password">கடவுச்சொல்லை மறந்துவிட்டீர்களா</string>
+    <string name="name">பெயர்</string>
+    <string name="confirm_password">கடவுச்சொல்லை உறுதிப்படுத்து</string>
+    <string name="back_to">மீண்டும் </string>
+    <string name="logout">வெளியேறு</string>
+    <string name="Submit">சமர்ப்பிக்கவும்</string>
+    <string name="enter_your_email_or_mobile">உங்கள் மின்னஞ்சல் அல்லது மொபைலை உள்ளிடவும்</string>
+    <string name="don_t_have_an_account">கணக்கு இல்லையா?</string>
+</resources>

@@ -8,11 +8,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -26,17 +28,25 @@ import java.util.ArrayList;
 public class MainActivity5 extends AppCompatActivity {
 
     ListView listView;
+    ImageView backimg;
     ArrayList<String> arr1 = new ArrayList<>();
     ArrayList<String> caption2 = new ArrayList<>();
     ArrayList<String> icon2 = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main5);
         listView = findViewById(R.id.lv5);
-
+        backimg = findViewById(R.id.backimg2);
         Intent i = getIntent();
         arr1 = i.getStringArrayListExtra("jsonarray");
+        backimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity5.super.onBackPressed();
+            }
+        });
         try {
             JSONArray jsonArray = new JSONArray(arr1.get(0));
             for (int j=0;j< jsonArray.length();j++){

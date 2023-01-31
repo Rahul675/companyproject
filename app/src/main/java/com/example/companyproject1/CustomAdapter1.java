@@ -115,6 +115,7 @@ public class CustomAdapter1 implements ListAdapter {
 
                     } catch (JSONException e) {
                         e.printStackTrace();
+                        Toast.makeText(context, "mainactivity4 e: "+e, Toast.LENGTH_SHORT).show();
                     }
                 }
             });

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Trinity World</string>
+    <string name="Email">ইমেইল</string>
+    <string name="Password">পাসওয়ার্ড</string>
+    <string name="Rememberme">আমাকে মনে করं</string>
+    <string name="Username">ব্যবহারকারীর নাম</string>
+    <string name="Change">পরিবর্তন</string>
+    <string name="Signup">নিবন্ধন করুন</string>
+    <string name="email">ইমেইল</string>
+    <string name="signout">সাইন আউট</string>
+    <string name="newEmail">এই ইমেইল ইতিমধ্যে গ্রহণ করা হয়েছে</string>
+    <string name="already" translatable="false">ভাষা ইতিমধ্যে নির্বাচিত!</string>
+    <string name="Success">সফল লগইন</string>
+    <string name="SuccessSign">সাইন আপ সফল!</string>
+    <string name="Failed">ভুল ইমেল বা পাসওয়ার্ড</string>
+    <string name="or_sign_up_using">অথবা নিম্নলিখিত ব্যবহার করুন</string>
+    <string name="register">নিবন্ধন</string>
+    <string name="login">প্রবেশ করুন</string>
+    <string name="forgot_password">পাসওয়ার্ড ভুলে গেছেন</string>
+    <string name="name">নাম</string>
+    <string name="confirm_password">পাসওয়ার্ড নিশ্চিত করুন</string>
+    <string name="back_to">পেছনে </string>
+    <string name="logout">সাইন আউট</string>
+    <string name="Submit">আমানত</string>
+    <string name="enter_your_email_or_mobile">আপনার ইমেইল বা মোবাইল লিখুন</string>
+    <string name="don_t_have_an_account">একটি অ্যাকাউন্ট নেই?</string>
+</resources>

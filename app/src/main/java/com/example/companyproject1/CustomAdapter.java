@@ -98,6 +98,7 @@ public class CustomAdapter implements ListAdapter {
                                         JSONArray jsonArray = response.getJSONArray("menu");
                                         ArrayList<String> act2 = new ArrayList<>();
                                         ArrayList<String> act3 = new ArrayList<>();
+                                        ArrayList<String> act4 = new ArrayList<>();
                                         JSONObject jsonObject = jsonArray.getJSONObject(position);
                                         JSONArray ja = jsonObject.getJSONArray("subCategoryList");
                                         if (ja.length()==0) {
@@ -119,7 +120,7 @@ public class CustomAdapter implements ListAdapter {
                                         }
                                     } catch (JSONException e) {
                                         e.printStackTrace();
-                                        Toast.makeText(context, "e: "+e, Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(context, "mainactivity2 e: "+e, Toast.LENGTH_SHORT).show();
                                     }
                                 }
                                 @Override

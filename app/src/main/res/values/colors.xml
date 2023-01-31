@@ -8,8 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="white2">#FFFFFFFF</color>
-    <color name="grey">#61FFFFFF</color>
+    <color name="grey">#74FFFFFF</color>
     <color name="themecolor">#00072b</color>
     <color name="themecolor2">#2F00072B</color>
+    <color name="defaultcolor1">#7217E8</color>
+    <color name="textcolorhint">#431C1C1C</color>
+    <color name="myprimerycolor">#38b6ff</color>
 
 </resources>

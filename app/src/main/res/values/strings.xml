@@ -13,7 +13,6 @@
     <!--    <string name="linkedin_client_secret" translatable="false">CTFU8cFRRxxDpJLQ</string>-->
     <!--    <string name="linkedin_redirection_url" translatable="false">GATXUWWYDFFHN4SK64F6H3X6UVUCRGMR6BXJ4JAPT2MMG5QI5VRQLQNE</string>-->
 
-
     <string name="Email">Email</string>
     <string name="Password">Password</string>
     <string name="welcome" translatable="false">Welcome to the app!!</string>
@@ -33,13 +32,15 @@
     <string name="or_sign_up_using">Or Sign Up Using</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
-    <string name="forgot_password">Forgot Password</string>
+    <string name="forgot_password">Forget Password</string>
     <string name="name">Name</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="back_to">Back to </string>
     <string name="logout">Logout</string>
     <string name="enter_your_email_or_mobile">Enter your email or mobile</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="link">link</string>
+    <string name="Submit">Submit</string>
 
 
     <!--    <string name="facebook_app_id">1546070442486065</string>-->

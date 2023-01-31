@@ -2,6 +2,11 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="10dp"
+    android:elevation="0dp"
+    app:cardElevation="0dp"
+    android:backgroundTint="@android:color/transparent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
@@ -26,15 +31,21 @@
             android:layout_marginBottom="15dp"
             app:cardCornerRadius="10dp">
 
-            <EditText
-                android:layout_marginTop="2dp"
+            <VideoView
+                android:layout_gravity="center"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:backgroundTint="@color/white"
-                android:hint="Video Display"
-                android:lineHeight="0dp"
-                android:id="@+id/et1"/>
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:id="@+id/video_display_vv"/>
+<!--            <EditText-->
+<!--                android:layout_marginTop="2dp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:inputType="textPersonName"-->
+<!--                android:backgroundTint="@color/white"-->
+<!--                android:hint="Video Display"-->
+<!--                android:lineHeight="0dp"-->
+<!--                android:id="@+id/et1"/>-->
 
         </androidx.cardview.widget.CardView>
 

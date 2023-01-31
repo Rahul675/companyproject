@@ -39,20 +39,28 @@ public class SignupActivity extends AppCompatActivity {
         signupbtn = findViewById(R.id.button);
         loginback = findViewById(R.id.loginback);
         auth = FirebaseAuth.getInstance();
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
 
         signupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!conpass.getText().toString().equals(pass.getText().toString())) {
-                    conpass.setError("Password is not matching");
-                }
-                else if(uname.getText().toString().isEmpty() | email.getText().toString().isEmpty() |
-                pass.getText().toString().isEmpty()){
-                    uname.setError("Missing field");
-                }
-                else{
-                    signUp();
+                if (uname.getText().toString().isEmpty() || email.getText().toString().isEmpty()
+                || pass.getText().toString().isEmpty() || conpass.getText().toString().isEmpty()){
+                    if (uname.getText().toString().isEmpty()){
+                        uname.setError("Name is empty");
+                    }else if (email.getText().toString().isEmpty()){
+                        email.setError("Email is empty");
+                    }else if (pass.getText().toString().isEmpty()){
+                        pass.setError("Password is empty");
+                    }else if (conpass.getText().toString().isEmpty()){
+                        conpass.setError("Confirm password is empty");
+                    }
+                }else {
+                    if(!conpass.getText().toString().equals(pass.getText().toString())) {
+                        conpass.setError("Password not matching");
+                    }else{
+                        signUp();
+                    }
                 }
             }
         });
@@ -92,6 +100,7 @@ public class SignupActivity extends AppCompatActivity {
                             myRef.child("users").child(task.getResult().getUser().getUid()).child("as").setValue("user");
                             Toast.makeText(SignupActivity.this, "Signup successfull",
                                     Toast.LENGTH_SHORT).show();
+                            auth.signOut();
                         }else {
                             Toast.makeText(SignupActivity.this, "Unable to signup",
                                     Toast.LENGTH_SHORT).show();

@@ -3,7 +3,7 @@
     <string name="app_name">बहुभाषी</string>
     <string name="Email">ईमेल</string>
     <string name="Password">पासवर्ड</string>
-    <string name="Rememberme">मुझे याद रखें</string>
+    <string name="Rememberme">याद रखें</string>
     <string name="Username">उपयोगकर्ता</string>
     <string name="Change">भाषा बदलो</string>
     <string name="Signup">साइन अप</string>
@@ -22,6 +22,7 @@
     <string name="confirm_password">पासवर्ड की पुष्टि</string>
     <string name="back_to">वापस </string>
     <string name="logout">लॉग आउट</string>
+    <string name="Submit">जमा करे</string>
     <string name="enter_your_email_or_mobile">अपना ईमेल या मोबाइल दर्ज करें</string>
     <string name="don_t_have_an_account">खाता नहीं है?</string>
 </resources>

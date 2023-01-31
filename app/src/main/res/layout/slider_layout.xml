@@ -2,8 +2,12 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="10dp"
+    android:elevation="0dp"
+    app:cardElevation="0dp"
+    android:backgroundTint="@android:color/transparent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,15 +31,13 @@
             android:layout_marginBottom="15dp"
             app:cardCornerRadius="10dp">
 
-            <EditText
-                android:layout_marginTop="2dp"
+            <com.google.android.material.slider.Slider
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:backgroundTint="@color/white"
-                android:hint="Slider"
-                android:lineHeight="0dp"
-                android:id="@+id/et1"/>
+                android:layout_height="50dp"
+                android:id="@+id/slider"
+                app:thumbColor="@color/black"
+                android:valueFrom="1"
+                android:valueTo="10"/>
 
         </androidx.cardview.widget.CardView>
 

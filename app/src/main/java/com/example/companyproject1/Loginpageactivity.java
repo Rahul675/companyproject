@@ -56,7 +56,7 @@ public class Loginpageactivity extends AppCompatActivity {
     String currentLanguage = "en", currentLang;
     Button loginbtn;
     EditText username,pass;
-    TextView signupbtn,changelang;
+    TextView signupbtn,changelang,forgetpass;
     ImageButton googleimage,facebookimage,twitterimage,linkedinimage;
     GoogleSignInOptions gso;
     GoogleSignInClient gsc;
@@ -83,9 +83,10 @@ public class Loginpageactivity extends AppCompatActivity {
         linkedinimage = findViewById(R.id.limg);
         signupbtn = findViewById(R.id.signup_btn);
         loginbtn = findViewById(R.id.loginbutton);
+        forgetpass = findViewById(R.id.forgetpass);
         changelang = findViewById(R.id.change_language);
         auth = FirebaseAuth.getInstance();
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
 
         String uname = username.getText().toString();
         String pas = pass.getText().toString();
@@ -104,10 +105,21 @@ public class Loginpageactivity extends AppCompatActivity {
                 if(username.getText().toString().equals(adminusername) || pass.getText().toString().equals(adminpassword)){
                     startActivity(new Intent(Loginpageactivity.this,MainActivity.class));
                 }else if (username.getText().toString().isEmpty() || pass.getText().toString().isEmpty()){
-                    Toast.makeText(Loginpageactivity.this, "Empty field", Toast.LENGTH_SHORT).show();
+                    if (username.getText().toString().isEmpty()) {
+                        username.setError("username is empty!");
+                    }else if (pass.getText().toString().isEmpty()){
+                        pass.setError("password is empty!");
+                    }
                 }else{
-                    Toast.makeText(Loginpageactivity.this, "Not Found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Loginpageactivity.this, "Incorrect username or password", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        forgetpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Loginpageactivity.this,ForgetPass.class));
             }
         });
 
@@ -142,7 +154,7 @@ public class Loginpageactivity extends AppCompatActivity {
     }
 
     public void changeLang() {
-        final String lang[] = {"English", "हिन्दी"};
+        final String lang[] = {"English", "हिन्दी(Hindi)", "বাংলা(Bangla)", "தமிழ்(Tamil)"};
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(this);
         mBuilder.setTitle("Change Language");
         mBuilder.setSingleChoiceItems(lang, -1, new DialogInterface.OnClickListener() {
@@ -151,10 +163,22 @@ public class Loginpageactivity extends AppCompatActivity {
                 if (i == 0) {
                     setlocale("");
                     recreate();
+                    finish();
                 }
                 else if (i == 1) {
                     setlocale("hi");
                     recreate();
+                    finish();
+                }
+                else if (i == 2) {
+                    setlocale("bg");
+                    recreate();
+                    finish();
+                }
+                else if (i == 3) {
+                    setlocale("tm");
+                    recreate();
+                    finish();
                 }
             }
         });

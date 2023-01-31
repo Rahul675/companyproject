@@ -31,6 +31,7 @@ public class android_networking_connection {
     Context context;
     ArrayList<String> caption1 = new ArrayList<>();
     ArrayList<String> icon1 = new ArrayList<>();
+    ArrayList<String> menuId1 = new ArrayList<>();
 
     public android_networking_connection(Context context) {
         this.context = context;
@@ -57,7 +58,7 @@ public class android_networking_connection {
                             listView.setAdapter(customAdapter);
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(context, "e: "+e, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, " anc class called e: "+e, Toast.LENGTH_SHORT).show();
                         }
                     }
 
